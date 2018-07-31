@@ -14,7 +14,7 @@ RUN set -ex \
  && curl -L https://apt.mopidy.com/mopidy.list -o /etc/apt/sources.list.d/mopidy.list \
  && apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        mopidy \
+        mopidy 
   #      mopidy-soundcloud \
   #      mopidy-spotify \
  #&& curl -L https://bootstrap.pypa.io/get-pip.py | python - \
@@ -46,7 +46,7 @@ COPY mopidy.conf /var/lib/mopidy/.config/mopidy/mopidy.conf
 #COPY pulse-client.conf /etc/pulse/client.conf
 
 # Allows any user to run mopidy, but runs by default as a randomly generated UID/GID.
-#ENV HOME=/var/lib/mopidy
+ENV HOME=/var/lib/mopidy
 #RUN set -ex \
  #&& usermod -u 84044 mopidy \
  #&& groupmod -g 84044 audio \
@@ -54,11 +54,11 @@ COPY mopidy.conf /var/lib/mopidy/.config/mopidy/mopidy.conf
  #&& chmod go+rwX -R $HOME /entrypoint.sh
 
 # Runs as mopidy user by default.
-#USER mopidy
+USER mopidy
 
-#VOLUME ["/var/lib/mopidy/local", "/var/lib/mopidy/media"]
+VOLUME ["/var/lib/mopidy/local", "/var/lib/mopidy/media"]
 
-EXPOSE 6600 6680 5555/udp
+EXPOSE 6600 6680
 
 ENTRYPOINT ["/usr/bin/dumb-init"]
 CMD ["/usr/bin/mopidy"]
