@@ -1,16 +1,14 @@
 FROM debian:stretch-slim
 
 RUN set -ex \
-    # Official Mopidy install for Debian/Ubuntu along with some extensions
-    # (see https://docs.mopidy.com/en/latest/installation/debian/ )
  && apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
         curl \
         dumb-init \
-        gcc \
+       # gcc \
         gnupg \
-        gstreamer1.0-alsa \
-        gstreamer1.0-plugins-bad \
+        #gstreamer1.0-alsa \
+        #gstreamer1.0-plugins-bad \
         python-crypto \
  && curl -L https://apt.mopidy.com/mopidy.gpg | apt-key add - \
  && curl -L https://apt.mopidy.com/mopidy.list -o /etc/apt/sources.list.d/mopidy.list \
