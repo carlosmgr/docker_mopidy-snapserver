@@ -14,7 +14,7 @@ RUN set -ex \
  && curl -L https://apt.mopidy.com/mopidy.list -o /etc/apt/sources.list.d/mopidy.list \
  && apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        mopidy #\
+        mopidy \
   #      mopidy-soundcloud \
   #      mopidy-spotify \
  #&& curl -L https://bootstrap.pypa.io/get-pip.py | python - \
