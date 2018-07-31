@@ -17,9 +17,6 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache
 COPY mopidy.conf /var/lib/mopidy/.config/mopidy/mopidy.conf
 ENV HOME=/var/lib/mopidy
 
-# mopidy user
-#USER mopidy
-
 # Home directory
 VOLUME /var/lib/mopidy/
 # Media directory
