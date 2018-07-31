@@ -1,1 +1,1 @@
-# Docker mopidy
+# mopidy Docker x64
