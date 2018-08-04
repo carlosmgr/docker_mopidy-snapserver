@@ -26,6 +26,9 @@ VOLUME /var/lib/mopidy/media
 EXPOSE 6600
 # Port http
 EXPOSE 6680
+EXPOSE 5353
+EXPOSE 1704
+EXPOSE 1705
 
 ENTRYPOINT ["/usr/bin/dumb-init"]
 # Start mopidy
