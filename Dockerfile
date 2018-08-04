@@ -21,15 +21,17 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache
 
 # Default configuration.
 RUN mkdir /usr/home
-ENV HOME=/usr/home/ 
-#RUN mopidy config > /usr/home/.config/mopidy/mopidy.conf
+ENV HOME=/usr/home/
+ADD snapserver /usr/home/.config/snapserver/
+RUN ln -sf /usr/home/.config/snapserver/snapserver /etc/default/snapserver
+ADD ./supervisord.conf /etc/supervisord.conf
+ADD ./start.sh /start.sh
+RUN chmod a+x /start.sh
 
-
-# Mopidy Home directory
-VOLUME /var/lib/mopidy/
+# Config directory
+VOLUME /usr/home
 # Mopidy Media directory
 VOLUME /var/lib/mopidy/media
-
 
 # mopidy mpd Port
 EXPOSE 6600
@@ -41,6 +43,5 @@ EXPOSE 5353
 EXPOSE 1704
 EXPOSE 1705
 
-ENTRYPOINT ["/usr/bin/dumb-init"]
-# Start mopidy
-CMD ["/usr/bin/mopidy"]
+# Start
+ENTRYPOINT ["/start.sh"]
