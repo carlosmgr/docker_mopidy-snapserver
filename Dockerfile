@@ -1,6 +1,7 @@
 FROM debian:stretch-slim
 
 # Mopidy installation 
+# https://www.mopidy.com/
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y curl dumb-init gnupg python-crypto
 RUN curl -L https://apt.mopidy.com/mopidy.gpg | apt-key add
@@ -8,11 +9,18 @@ RUN curl -L https://apt.mopidy.com/mopidy.list -o /etc/apt/sources.list.d/mopidy
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mopidy
 
-# Snapserver installation
+# Snapserver installation 
+# https://github.com/badaix/snapcast
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y wget avahi-daemon avahi-utils supervisor
 RUN  wget https://github.com/badaix/snapcast/releases/download/v0.15.0/snapserver_0.15.0_amd64.deb -P /var/tmp/
 RUN dpkg -i --force-all /var/tmp/snapserver_0.15.0_amd64.deb
 RUN apt-get -f install -y
+
+# Extensions Installation
+RUN curl -L https://bootstrap.pypa.io/get-pip.py | python -
+# Iris  
+# https://github.com/jaedb/iris
+RUN pip install Mopidy-Iris && echo "mopidy ALL=NOPASSWD: /usr/local/lib/python2.7/dist-packages/mopidy_iris/system.sh" >> /etc/sudoers
 
 # Clean-up
 RUN apt-get purge --auto-remove -y curl wget 
