@@ -1,4 +1,4 @@
-# mopidy Docker x64
+# Mopidy and Snapserver x64
 
 Usage
 
