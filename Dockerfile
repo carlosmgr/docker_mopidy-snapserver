@@ -22,7 +22,7 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache
 # Default configuration.
 RUN mkdir /usr/home
 ENV HOME=/usr/home/ 
-RUN mopidyctl config > /usr/home/.config/mopidy/mopidy.conf
+RUN mopidy config > /usr/home/.config/mopidy/mopidy.conf
 
 
 # Mopidy Home directory
