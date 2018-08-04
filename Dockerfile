@@ -20,7 +20,7 @@ RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache
 
 # Default configuration.
-RUN mkdir /usr/home
+RUN mkdir -p /usr/home/.config/snapserver/
 ENV HOME=/usr/home/
 ADD ./snapserver /usr/home/.config/snapserver/
 RUN ln -sf /usr/home/.config/snapserver/snapserver /etc/default/snapserver
