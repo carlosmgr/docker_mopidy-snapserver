@@ -22,7 +22,7 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache
 # Default configuration.
 RUN mkdir -p /usr/home/.config/snapserver/
 ENV HOME=/usr/home/
-RUN cp /etc/default/snapserver /usr/home/.config/snapserver/snapserver
+RUN mv /etc/default/snapserver /usr/home/.config/snapserver/snapserver
 RUN ln -sf /usr/home/.config/snapserver/snapserver /etc/default/snapserver
 ADD ./supervisord.conf /etc/supervisord.conf
 ADD ./start.sh /start.sh
