@@ -12,8 +12,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mopidy
 # Snapserver installation 
 # https://github.com/badaix/snapcast
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y wget avahi-daemon avahi-utils supervisor
-RUN  wget https://github.com/badaix/snapcast/releases/download/v0.15.0/snapserver_0.15.0_amd64.deb -P /var/tmp/
-RUN dpkg -i --force-all /var/tmp/snapserver_0.15.0_amd64.deb
+RUN  wget https://github.com/badaix/snapcast/releases/download/v0.16.0/snapserver_0.16.0_amd64.deb -P /var/tmp/
+RUN dpkg -i --force-all /var/tmp/snapserver_0.16.0_amd64.deb
 RUN apt-get -f install -y
 
 # Extensions Installation
