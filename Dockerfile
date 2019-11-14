@@ -4,8 +4,8 @@ FROM debian:stretch-slim
 # https://www.mopidy.com/
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y curl dumb-init gnupg python-crypto
-RUN curl -L https://apt.mopidy.com/mopidy.gpg | apt-key add
-RUN curl -L https://apt.mopidy.com/mopidy.list -o /etc/apt/sources.list.d/mopidy.list
+RUN curl -L https://apt.mopidy.com/mopidy.gpg | apt-key add -
+RUN curl -L https://apt.mopidy.com/buster.list -o /etc/apt/sources.list.d/mopidy.list
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mopidy
 
